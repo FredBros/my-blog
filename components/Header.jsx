@@ -3,6 +3,7 @@ import SwitchColor from '../components/SwitchColor'
 import Logo from './Logo'
 import RSHeader from './RSHeader'
 import MediaQuery from "react-responsive";
+import NavSidebar from "./NavSidebar";
 import Navbar from './Navbar'
 
 
@@ -19,7 +20,7 @@ function Header() {
         <div className="header-container">
           <div className="container-top">
             <Logo />
-            <Navbar />
+            <NavSidebar />
           </div>
           <div className="amatic">Blog WebDev & LifeStyle</div>
           <RSHeader />
