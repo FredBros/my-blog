@@ -15,3 +15,34 @@ export const getCategories = async () => {
 
   return result.categories;
 };
+
+export const getPosts = async () => {
+  const query = gql`
+    query MyQuery {
+      postsConnection(orderBy: publishedAt_ASC) {
+        edges {
+          cursor
+          node {
+            createdAt
+            excerpt
+            slug
+            title
+            featuredImage {
+              url
+              width
+              height
+            }
+            categories {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.postsConnection.edges;
+};

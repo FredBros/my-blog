@@ -81,7 +81,9 @@ function NavSidebar() {
           width: 300px;
           transition: all 0.3s ease-in-out;
           transform: ${isSidebarOpen ? "none" : "translate(300px)"};
-          background-color: white;
+          background-color: var(--background);
+          color : var(--foreground);
+          font-family: "Bebas Neue", cursive;
         }
         .test {
           position: relative;

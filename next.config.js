@@ -4,3 +4,15 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+module.exports = {
+  i18n: {
+    locales: ["fr"],
+    defaultLocale: "fr",
+  },
+};
+module.exports = {
+  images: {
+    domains: ["media.graphassets.com"],
+  },
+};
