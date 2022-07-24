@@ -17,11 +17,19 @@ export default function Home({ posts }) {
       </Head>
       <main>
         <section>
-          {posts.map((post) => (
-            <PostCard key={uuidv4()} post={post.node} />
+          {posts.map((post, index) => (
+            <PostCard key={uuidv4()} index={index} post={post.node} />
           ))}
         </section>
       </main>
+
+      <style jsx>{`
+        section {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+      `}</style>
     </>
   );
 }
