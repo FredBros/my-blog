@@ -1,11 +1,15 @@
 import React from 'react'
 import Link from "next/link";
 
-const NavDropdown = ({ submenus, dropdown }) => {
+const NavDropdown = ({ submenus, dropdown, setDropdown }) => {
   return (
     <ul className="dropdown">
       {submenus.map((submenu, index) => (
-        <li key={index} className="menu-items">
+        <li
+          key={index}
+          className="menu-items"
+          onClick={() => setDropdown((prev) => !prev)}
+        >
           <Link href={submenu.itemId}>
             <a> {submenu.title}</a>
           </Link>
@@ -21,7 +25,7 @@ const NavDropdown = ({ submenus, dropdown }) => {
           border-radius: 3px;
           border: solid 1px var(--color5);
           background-color: var(--background);
-          display : ${dropdown ? "block" : "none"}
+          display: ${dropdown ? "block" : "none"};
         }
         .menu-items {
           padding: 5px;

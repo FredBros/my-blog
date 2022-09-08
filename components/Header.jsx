@@ -42,11 +42,15 @@ function Header() {
       </MediaQuery>
 
       <style jsx>{`
+        .header {
+          z-index: 5;
+          position: relative;
+        }
         .header-container {
           background-color: var(--color5);
         }
         .amatic {
-          font-size: 40px;
+          font-size: var(--font-size-xxxl);
           color: var(--main-bg-color);
           text-align: center;
         }
@@ -60,16 +64,10 @@ function Header() {
         .RS-Theme-container {
           display: flex;
           justify-content: space-between;
-          align-items: top;
+          align-items: center;
           width: 30%;
           gap: 4px;
-        }
-        @media screen and (min-width: 576px) {
-          .amatic {
-            font-size: 96px;
-          }
-        }
-        @media screen and (min-width: 768px) {
+          min-width: 280px;
         }
       `}</style>
     </div>

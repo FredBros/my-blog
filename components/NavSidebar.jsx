@@ -23,32 +23,39 @@ function NavSidebar() {
   
   return (
     <>
-      <div
-        className="navSidebar-bg"
-        onClick={() => setIsSidebarOpen(false)}
-      ></div>
-      <div
-        className="btn-menu"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      >
-        <Image src="/menu-svgrepo-com.svg" alt="menu" width={30} height={30} />
+      <div className="navsidebar">
+        <div
+          className="navSidebar-bg"
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
+        <div
+          className="btn-menu"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          <Image
+            src="/menu-svgrepo-com.svg"
+            alt="menu"
+            width={30}
+            height={30}
+          />
+        </div>
+        {/* Sidebar */}
+        <div className="sidebar">
+          <Navigation
+            activeItemId={router.pathname}
+            onSelect={({ itemId }) => {
+              console.log( {itemId} );
+              // {
+              //   itemId !== "/category" && setIsSidebarOpen(false);
+              // }
+             if (itemId !== "/category") { 
+              router.push(itemId)
+              setIsSidebarOpen(false)}
+            }}
+            items={navItems(categories)}
+          />
+        </div>
       </div>
-
-      {/* Sidebar */}
-      <div className="sidebar">
-        <Navigation
-          activeItemId={router.pathname}
-          onSelect={({ itemId }) => {
-            console.log({ itemId });
-            {
-              itemId !== "/category" && setIsSidebarOpen(false);
-            }
-            router.push(itemId);
-          }}
-          items={navItems(categories)}
-        />
-      </div>
-
       <style jsx>{`
         .navsidebar {
           z-index: 100;
@@ -69,9 +76,9 @@ function NavSidebar() {
           cursor: pointer;
           position: fixed;
           right: 10px;
-          padding: 4px;
-          padding-bottom: 0;
+          padding: 4px;          
           border-radius: 4px;
+          height: 38px;
         }
         .sidebar {
           position: fixed;
@@ -82,14 +89,9 @@ function NavSidebar() {
           transition: all 0.3s ease-in-out;
           transform: ${isSidebarOpen ? "none" : "translate(300px)"};
           background-color: var(--background);
-          color : var(--foreground);
+          color: var(--foreground);
           font-family: "Bebas Neue", cursive;
-        }
-        .test {
-          position: relative;
-          z-index: 50;
-          background-color: white;
-        }
+        }        
       `}</style>
     </>
   );

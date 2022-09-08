@@ -4,16 +4,14 @@ import imgRatio from "../utils/imgRatio"
 import BtnReadMore from "./BtnReadMore";
 
 function PostCard({ post, index }) {
-  console.log(index); 
 
   const imageRatio = imgRatio(post.featuredImage.width, post.featuredImage.height);
   const isEvenFoo = index => (index % 2 ===0) ;
   const isEven = isEvenFoo(index) 
-  console.log(index, isEven);
   
   return (
     <>
-      <article className="postcard">
+      <div className="postcard">
         <div className="image-container">
           <Image
             src={post.featuredImage.url}
@@ -33,7 +31,7 @@ function PostCard({ post, index }) {
           </div>
           <BtnReadMore slug={post.slug} />
         </div>
-      </article>
+      </div>
       <style jsx>{`
         .postcard {
           width: 90%;
@@ -53,6 +51,7 @@ function PostCard({ post, index }) {
         .content {
           border: solid 2px var(--foreground);
           padding: 10px 20px;
+          line-height: 1.5;
         }
         @media screen and (min-width: 768px) {
           .postcard {

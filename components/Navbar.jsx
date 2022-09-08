@@ -8,11 +8,15 @@ function Navbar() {
 
   
   const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    getCategories().then((newCategories) => setCategories(newCategories));
-  }, []);
+
   const navbarItems = navItems(categories);
   const [dropdown, setDropdown] = useState(false);
+
+
+  useEffect(() => {
+    getCategories().then((newCategories) => setCategories(newCategories));
+    
+  }, []);
 
 
   // Close dropdown when click outside menu
@@ -35,10 +39,10 @@ function Navbar() {
 
   return (
     <>
-      <div className="navbar">
+      <div className="navbar" ref={ref}>
         <ul className="navbar-list">
           {navbarItems.map((navItem, index) => (
-            <li className="menu-items" key={index} ref={ref}>
+            <li className="menu-items" key={index}>
               {navItem.subNav ? (
                 <>
                   <button
@@ -49,7 +53,11 @@ function Navbar() {
                   >
                     {navItem.title}
                   </button>
-                  <NavDropdown submenus={navItem.subNav} dropdown={dropdown} />
+                  <NavDropdown
+                    submenus={navItem.subNav}
+                    dropdown={dropdown}
+                    setDropdown={setDropdown}
+                  />
                 </>
               ) : (
                 <Link href={navItem.itemId}>

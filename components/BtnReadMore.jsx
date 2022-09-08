@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function BtnReadMore(slug) {
+function BtnReadMore({slug}) {
   return (
     <div className="button">
       <Link href={`/post/${slug}`}>Lire plus</Link>
