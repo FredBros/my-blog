@@ -68,7 +68,6 @@ function CarouselPosts({ posts }) {
         .carousel-item {
           position: relative;
           height: 250px;
-          position: relative;
         }
         .next-image {
           top: 0px;

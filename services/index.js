@@ -2,6 +2,50 @@ import { request, gql } from "graphql-request";
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
+
+
+export const getHomeData = async () => {
+  const query = gql`
+  query getHomeData() {
+  postsConnection(where: {featuredPost: true}, orderBy: createdAt_ASC) {
+    edges {
+      node {
+        categories {
+          name
+          slug
+        }
+        excerpt
+        featuredImage {
+          url
+          width
+          height
+        }
+        title
+        slug
+        createdAt
+      }
+      cursor
+    }
+  }
+  editos {
+    title
+    createdAt
+    featuredImage {
+      url
+      height
+      width
+    }
+    content {
+      raw
+    }
+  }
+}
+
+  `;
+  const result = await request(graphqlAPI, query);
+  return result
+}
+
 export const getCategories = async () => {
   const query = gql`
     query GetCategories {
@@ -66,10 +110,10 @@ export const getPosts = async () => {
 
 
 //  expérimental
-export const getPostsByPage = async (skip) => {
+export const getPostsByPage = async (limit, offset) => {
   const query = gql`
-    query getPosts($skip: Int!) {
-      postsConnection(orderBy: createdAt_ASC, first: 2, skip: $skip) {
+    query GetPostsByPage($limit: Int!, $offset: Int!) {
+      postsConnection(orderBy: createdAt_ASC, first: $limit, skip: $offset) {
         edges {
           cursor
           node {
@@ -88,13 +132,23 @@ export const getPostsByPage = async (skip) => {
             }
           }
         }
+        aggregate {
+          count
+        }
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          pageSize
+          endCursor
+          startCursor
+        }
       }
     }
   `;
 
-  const result = await request(graphqlAPI, query, {skip});
+  const result = await request(graphqlAPI, query, {limit, offset});
 
-  return result.postsConnection.edges;
+  return result.postsConnection;
 };
 
 
@@ -263,4 +317,34 @@ export const getPostShared = async (slug) => {
   `;
   const result = await request(graphqlAPI, query, { slug });
   return result.post;
+};
+
+export const getNumberOfPosts = async() =>{
+const query = gql`
+query GetNumberOfPosts {
+  postsConnection {
+    aggregate {
+      count
+    }
+  }
+}`
+const result = await request(graphqlAPI, query)
+return result.postsConnection.aggregate.count
+}
+
+export const getNumberOfPostsByCategory = async (category) => {
+  const query = gql`
+    query GetNumberOfPostsByCategory($category: String!) {
+      postsConnection(
+        orderBy: createdAt_ASC
+        where: { categories_some: { slug: $category } }
+      ) {
+        aggregate {
+          count
+        }
+      }
+    }
+  `;
+  const result = await request(graphqlAPI, query, {category});
+  return result.postsConnection.aggregate.count;
 };

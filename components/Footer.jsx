@@ -3,7 +3,6 @@ import RSHeader from "./RSHeader"
 
 function Footer() {
   const year = new Date().getFullYear(); 
-  console.log(year);
   return (
     <div className="footer-container">
       <p className="copyright">©{year} Tranquil Fred</p>
@@ -13,10 +12,11 @@ function Footer() {
           background-color: var(--color5);
           color: var(--main-bg-color);
           padding: 10px;
+          margin-top: 20px;
         }
-        .copyright{
+        .copyright {
           margin: 0;
-          text-align:center;
+          text-align: center;
         }
       `}</style>
     </div>

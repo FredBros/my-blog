@@ -1,7 +1,4 @@
 TODO :
 
-Off canvas multi level :
-https://github.com/zutigrm/react-offcanvas-menu
-
-useRouter : 
-https://stackoverflow.com/questions/58022046/get-url-pathname-in-nextjs
+remettre limit à 10 dans 
+pages\posts\[page].js
