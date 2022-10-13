@@ -2,12 +2,12 @@
 
 const navItems=(categories) =>  ([
   { title: "accueil", itemId: "/" },
-  { title: "derniers articles", itemId: "/posts" },
+  { title: "derniers articles", itemId: "/posts/1" },
   {
     title: "catégories",
     itemId: "/category",
     subNav: categories.map((category) => {
-      return { title: category.name, itemId: `/category/${category.slug}` };
+      return { title: category.name, itemId: `/${category.slug}/1` };
     }),
   },
   { title: "à propos", itemId: "/about" },

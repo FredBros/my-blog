@@ -6,12 +6,15 @@ import {
   getPostsByPage,
 } from "../services";
 
+//! changer limit à 10
+const limit = 2;
+
 function test() {
   
 
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
 
-  const getNumberOfPostsByCategory =  async () => {
+  const numberOfPostsByCategoryFoo =  async () => {
     const categories = await getCategories()
     const value = await Promise.all(categories.map((category) => 
       getNumberOfPostsByCategory(category.slug)))
@@ -26,10 +29,30 @@ function test() {
 
 
 (async () => {
-  const numberOfPostsByCategory = await getNumberOfPostsByCategory();
-  console.log(numberOfPostsByCategory);   
-})();
+  const numberOfPostsByCategory = await numberOfPostsByCategoryFoo();
 
+ function* numberOfPages({ total, limit }) {
+   let page = 1;
+   let offset = 0;
+
+   while (offset < total) {
+     yield page;
+
+     page++;
+     offset += limit;
+   }
+ }
+
+ const arraysOfPaths = numberOfPostsByCategory.map((category) => [
+  ...numberOfPages({
+    total: category.value,
+    limit,
+  })
+ ].map((page) =>({params : {category: category.slug, page: String(page)},}))
+ )
+ const paths = arraysOfPaths.flat()
+  console.log(paths);   
+})();
 
 
   return <div>test</div>;

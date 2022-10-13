@@ -68,7 +68,6 @@ export async function getStaticPaths(){
   ].map((page) => ({
     params: { page: String(page) },
   }));
-
   return {
     paths,
     fallback: true,

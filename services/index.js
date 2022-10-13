@@ -246,6 +246,56 @@ export const getPostsByCategory = async (slug) => {
   return result.postsConnection.edges;
 };
 
+export const getPostsByCategoryByPage = async (slug, limit, offset) => {
+  const query = gql`
+    query getPostsByCategoryByPage(
+      $slug: String!
+      $limit: Int!
+      $offset: Int!
+    ) {
+      postsConnection(
+        orderBy: createdAt_ASC
+        first: $limit
+        skip: $offset
+        where: { categories_some: { slug: $slug } }
+      ) {
+        edges {
+          cursor
+          node {
+            createdAt
+            excerpt
+            slug
+            title
+            featuredImage {
+              url
+              width
+              height
+            }
+            categories {
+              name
+              slug
+            }
+          }
+        }
+        aggregate {
+          count
+        }
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          pageSize
+          endCursor
+          startCursor
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, { slug, limit, offset });
+
+  return result.postsConnection;
+};
+
 
 export const getCategoryName = async (slug) => {
   const query = gql`

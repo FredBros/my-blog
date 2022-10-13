@@ -9,7 +9,7 @@ function Pagination({
   limit,  
   count,
 }) {
-const totalPages = count / limit;
+const totalPages = Math.ceil(count / limit);
   return (
     <>
       <div className="pagination-container">
