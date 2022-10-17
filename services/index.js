@@ -3,48 +3,26 @@ import { request, gql } from "graphql-request";
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 
-
-export const getHomeData = async () => {
+export const getEdito = async () => {
   const query = gql`
-  query getHomeData() {
-  postsConnection(where: {featuredPost: true}, orderBy: createdAt_ASC) {
-    edges {
-      node {
-        categories {
-          name
-          slug
-        }
-        excerpt
+    query GetEdito {
+      editos {
+        title
+        createdAt
         featuredImage {
           url
-          width
           height
+          width
         }
-        title
-        slug
-        createdAt
+        content {
+          raw
+        }
       }
-      cursor
     }
-  }
-  editos {
-    title
-    createdAt
-    featuredImage {
-      url
-      height
-      width
-    }
-    content {
-      raw
-    }
-  }
-}
-
   `;
   const result = await request(graphqlAPI, query);
-  return result
-}
+  return result.editos;
+};
 
 export const getCategories = async () => {
   const query = gql`
@@ -60,7 +38,7 @@ export const getCategories = async () => {
   return result.categories;
 };
 
-export const getPostsCount = async() => {
+export const getPostsCount = async () => {
   const query = gql`
     query getPostsCount {
       postsConnection {
@@ -70,10 +48,9 @@ export const getPostsCount = async() => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query)
+  const result = await request(graphqlAPI, query);
   return result.postsConnection.aggregate.count;
-}
-
+};
 
 export const getPosts = async () => {
   const query = gql`
@@ -86,6 +63,7 @@ export const getPosts = async () => {
             excerpt
             slug
             title
+            views
             featuredImage {
               url
               width
@@ -106,9 +84,6 @@ export const getPosts = async () => {
   return result.postsConnection.edges;
 };
 
-
-
-
 //  expérimental
 export const getPostsByPage = async (limit, offset) => {
   const query = gql`
@@ -121,6 +96,7 @@ export const getPostsByPage = async (limit, offset) => {
             excerpt
             slug
             title
+            views
             featuredImage {
               url
               width
@@ -146,11 +122,10 @@ export const getPostsByPage = async (limit, offset) => {
     }
   `;
 
-  const result = await request(graphqlAPI, query, {limit, offset});
+  const result = await request(graphqlAPI, query, { limit, offset });
 
   return result.postsConnection;
 };
-
 
 export const getPostDetails = async (slug) => {
   const query = gql`
@@ -163,7 +138,7 @@ export const getPostDetails = async (slug) => {
         title
         slug
         publishedAt
-        
+        views
         author {
           name
           photo {
@@ -183,20 +158,10 @@ export const getPostDetails = async (slug) => {
     }
   `;
   const result = await request(graphqlAPI, query, { slug });
-    return result.post
-}
-
-export const submitComment = async (obj) => {
-  const result = await fetch("/api/comments", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(obj),
-  });
-
-  return result.json();
+  return result.post;
 };
+
+
 
 export const getComments = async (slug) => {
   const query = gql`
@@ -214,11 +179,13 @@ export const getComments = async (slug) => {
   return result.comments;
 };
 
-
 export const getPostsByCategory = async (slug) => {
   const query = gql`
     query getPostsByCategory($slug: String!) {
-      postsConnection(orderBy: createdAt_ASC, where: {categories_some: {slug: $slug}}) {
+      postsConnection(
+        orderBy: createdAt_ASC
+        where: { categories_some: { slug: $slug } }
+      ) {
         edges {
           cursor
           node {
@@ -226,6 +193,7 @@ export const getPostsByCategory = async (slug) => {
             excerpt
             slug
             title
+            views
             featuredImage {
               url
               width
@@ -296,7 +264,6 @@ export const getPostsByCategoryByPage = async (slug, limit, offset) => {
   return result.postsConnection;
 };
 
-
 export const getCategoryName = async (slug) => {
   const query = gql`
     query getCategoryName($slug: String!) {
@@ -307,7 +274,7 @@ export const getCategoryName = async (slug) => {
   `;
   const result = await request(graphqlAPI, query, { slug });
 
-  return result.categories[0].name
+  return result.categories[0].name;
 };
 
 export const getSimilarPosts = async (categories, slug) => {
@@ -331,9 +298,8 @@ export const getSimilarPosts = async (categories, slug) => {
     }
   `;
   const result = await request(graphqlAPI, query, { slug, categories });
-  return result.posts
-}
-
+  return result.posts;
+};
 
 export const getBlogTitle = async () => {
   const query = gql`
@@ -369,18 +335,19 @@ export const getPostShared = async (slug) => {
   return result.post;
 };
 
-export const getNumberOfPosts = async() =>{
-const query = gql`
-query GetNumberOfPosts {
-  postsConnection {
-    aggregate {
-      count
+export const getNumberOfPosts = async () => {
+  const query = gql`
+    query GetNumberOfPosts {
+      postsConnection {
+        aggregate {
+          count
+        }
+      }
     }
-  }
-}`
-const result = await request(graphqlAPI, query)
-return result.postsConnection.aggregate.count
-}
+  `;
+  const result = await request(graphqlAPI, query);
+  return result.postsConnection.aggregate.count;
+};
 
 export const getNumberOfPostsByCategory = async (category) => {
   const query = gql`
@@ -395,6 +362,46 @@ export const getNumberOfPostsByCategory = async (category) => {
       }
     }
   `;
-  const result = await request(graphqlAPI, query, {category});
+  const result = await request(graphqlAPI, query, { category });
   return result.postsConnection.aggregate.count;
+};
+
+
+
+export const getViews = async (slug) => {
+  const query = gql`
+    query GetViews($slug: String!) {
+      post(where: { slug: $slug }) {
+        views
+      }
+    }`
+    const result = await request(graphqlAPI, query, { slug})
+    return result.post.views;
+}
+
+
+export const submitComment = async (obj) => {
+  const result = await fetch("/api/comments", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  });
+
+  return result.json();
+};
+
+
+// object {slug : string, newViews: integer}
+export const updateViews = async (obj) => {
+  const result = await fetch("/api/views", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  });
+
+  return result.json();
 };

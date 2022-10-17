@@ -88,8 +88,6 @@ function CommentForm({slug, hide}) {
   const sendEmail = (commentObj) => {
     const { name, comment } = commentObj;
     const templateParams = { from_name: name, message : comment}
-    console.log("templateParams : ",templateParams);
-    console.log(process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID);
     emailjs
       .send(
         process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,

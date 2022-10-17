@@ -3,11 +3,11 @@ import {getNumberOfPosts, getPostsByPage} from "../../services"
 import { v4 as uuidv4 } from "uuid";
 import PostCard from "../../components/PostCard";
 import Pagination from "../../components/Pagination";
+import numberOfPages from "../../../my_blog/services/numberOfPages";
 
 
-//! changer limit à 10
-const limit = 2;
 
+const limit = parseInt(process.env.NEXT_PUBLIC_NB_OF_POSTS_BY_PAGES) || 10;
 function posts({ currentPageNumber, hasNextPage, hasPreviousPage, posts, count }) {
   return (
     <>
@@ -49,17 +49,7 @@ export default posts;
 export async function getStaticPaths(){
   const total = await getNumberOfPosts();
 
-  function* numberOfPages({ total, limit }) {
-    let page = 1;
-    let offset = 0;
-
-    while (offset < total) {
-      yield page;
-
-      page++;
-      offset += limit;
-    }
-  }
+  
   const paths = [
     ...numberOfPages({
       total,

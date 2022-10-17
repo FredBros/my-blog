@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useRouter } from "next/router";
 import PostDetail from "../../components/PostDetail";
 import Loader from "../../components/Loader";
@@ -9,13 +9,20 @@ import useModal from "../../utils/useModal";
 import Modal from "../../components/Modal";
 import Button from "../../components/Button";
 import CarouselSimilarPosts from "../../components/CarouselSimilarPosts";
+import incrementViews from "../../services/incrementViews"
 
 
 
 
 
 function PostDetails({ post }) {
+  console.log("post : ", post);
   const router = useRouter();
+useEffect(() => {
+  incrementViews(post.slug)
+
+  
+}, [])
 
   if (router.isFallback) {
     return <Loader />;
@@ -25,6 +32,7 @@ function PostDetails({ post }) {
 
   return (
     <>
+    <h1>{`nb de vues : ${post.views}`}</h1>
       <PostDetail post={post} />
       <div className="btn-comment" onClick={toggle}>
         <Button text="Réagir"></Button>
