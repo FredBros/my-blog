@@ -2,7 +2,7 @@
 
 const navItems=(categories) =>  ([
   { title: "accueil", itemId: "/" },
-  { title: "derniers articles", itemId: "/posts/1" },
+  // { title: "derniers articles", itemId: "/posts/1" },
   {
     title: "catégories",
     itemId: "/category",

@@ -28,7 +28,7 @@ useEffect(() => {
   
 
   return (
-    (totalPages != 1 & isPageLoaded) && (
+    (totalPages != 1 & isPageLoaded) ? (
       <>
         <div className="pagination-container">
           {hasPreviousPage && (
@@ -94,7 +94,7 @@ useEffect(() => {
           }
         `}</style>
       </>
-    )
+    ) : ""
   );
 }
 

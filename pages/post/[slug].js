@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import PostDetail from "../../components/PostDetail";
 import Loader from "../../components/Loader";
@@ -9,20 +9,23 @@ import useModal from "../../utils/useModal";
 import Modal from "../../components/Modal";
 import Button from "../../components/Button";
 import CarouselSimilarPosts from "../../components/CarouselSimilarPosts";
-import incrementViews from "../../services/incrementViews"
+// import incrementViews from "../../services/incrementViews"
 
 
 
 
 
 function PostDetails({ post }) {
+
   console.log("post : ", post);
   const router = useRouter();
-useEffect(() => {
-  incrementViews(post.slug)
 
-  
-}, [])
+  //todo fix increment number of views .... later
+  // const [views, setViews] = useState(0)
+// useEffect(() => {
+//   const newViews = (async function (){ await incrementViews(post.slug)
+//   setViews(newViews)})()  
+// }, [])
 
   if (router.isFallback) {
     return <Loader />;
@@ -32,7 +35,6 @@ useEffect(() => {
 
   return (
     <>
-    <h1>{`nb de vues : ${post.views}`}</h1>
       <PostDetail post={post} />
       <div className="btn-comment" onClick={toggle}>
         <Button text="Réagir"></Button>
