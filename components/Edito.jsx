@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import Image from "next/image";
 
 function Edito({ edito }) {
-  console.log(edito.content.raw);
   const date = edito.createdAt;
   return (
     <div className="edito-container">

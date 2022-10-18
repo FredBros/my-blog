@@ -1,18 +1,20 @@
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
-import { getHomeData } from "../services";
+import { getPostsByPage, getEdito } from "../services";
 import PostCard from "../components/PostCard";
 import Edito from "../components/Edito"
 import { v4 as uuidv4 } from "uuid";
+import Pagination from "../components/Pagination";
 import emailjs from "@emailjs/browser";
 require("default-passive-events");
 
 
 
-  
+  const limit = parseInt(process.env.NEXT_PUBLIC_NB_OF_POSTS_BY_PAGES) || 10;
 
 
-export default function Home({ edito, posts }) {
+
+export default function Home({ edito, currentPageNumber, hasNextPage, hasPreviousPage, posts, count }) {
   
 
   emailjs.init(process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_API_KEY);
@@ -39,6 +41,13 @@ export default function Home({ edito, posts }) {
           </div>
         </div>
       </main>
+      <Pagination
+        limit={limit}
+        currentPageNumber={currentPageNumber}
+        count={count}
+        hasNextPage={hasNextPage}
+        hasPreviousPage={hasPreviousPage}
+      />
 
       <style jsx>{`
         .main-container {
@@ -56,14 +65,32 @@ export default function Home({ edito, posts }) {
   );
 }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
   
-  const data = (await getHomeData()) || [];
-  const edito = data.editos
-  const posts = data.postsConnection.edges
+//   const data = (await getHomeData()) || [];
+//   const edito = data.editos
+//   const posts = data.postsConnection.edges
+//   return {
+//     props: { edito, posts  },
+//     revalidate: 6000
+//   };
+// }
+
+export async function getStaticProps() {
+  const offset = 0;
+  const data = await getPostsByPage(limit, offset);
+const edito = await getEdito();
+  const { aggregate, edges, pageInfo } = data;
+
   return {
-    props: { edito, posts  },
-    revalidate: 6000
+    props: {
+      currentPageNumber: 1,
+      ...aggregate,
+      posts: edges,
+      ...pageInfo,
+      edito,
+    },
+    revalidate: 6000,
   };
 }
 
