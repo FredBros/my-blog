@@ -1,42 +1,37 @@
 :root {
   /* Your default theme */
-  --background: #F2EDE4;
+  --background: #f2ede4;
   --background2: #e9e1d2;
   --foreground: #260101;
-  --font-color : #260101;
- --main-bg-color:  #F2EDE4;
- --font-color-dark: #F2EDE4;
- --main-bg-color-dark : #1A202C;
- --color1 : #DD826F;
- --color2 : #F69F82;
- --color3 : #AFAC9B;
- --color4 : #6D9891;
- --color5 : #76575D;
- --color6 : #E1C1A5;
+  --font-color: #260101;
+  --main-bg-color: #f2ede4;
+  --font-color-dark: #f2ede4;
+  --main-bg-color-dark: #1a202c;
+  --color1: #dd826f;
+  --color2: #f69f82;
+  --color3: #afac9b;
+  --color4: #6d9891;
+  --color5: #76575d;
+  --color6: #e1c1a5;
 
- /* font-size */
- --font-size-sm: clamp(0.8rem, 0.26vw + 0.73rem, 0.89rem);
---font-size-base: clamp(1rem, 0.55vw + 0.86rem, 1.19rem);
---font-size-md: clamp(1.25rem, 0.97vw + 1.01rem, 1.58rem);
---font-size-lg: clamp(1.56rem, 1.59vw + 1.16rem, 2.11rem);
---font-size-xl: clamp(1.95rem, 2.5vw + 1.33rem, 2.81rem);
---font-size-xxl: clamp(2.44rem, 3.8vw + 1.49rem, 3.75rem);
---font-size-xxxl: clamp(3.05rem, 5.66vw + 1.64rem, 5rem);
+  /* font-size */
+  --font-size-sm: clamp(0.8rem, 0.26vw + 0.73rem, 0.89rem);
+  --font-size-base: clamp(1rem, 0.55vw + 0.86rem, 1.19rem);
+  --font-size-md: clamp(1.25rem, 0.97vw + 1.01rem, 1.58rem);
+  --font-size-lg: clamp(1.56rem, 1.59vw + 1.16rem, 2.11rem);
+  --font-size-xl: clamp(1.95rem, 2.5vw + 1.33rem, 2.81rem);
+  --font-size-xxl: clamp(2.44rem, 3.8vw + 1.49rem, 3.75rem);
+  --font-size-xxxl: clamp(3.05rem, 5.66vw + 1.64rem, 5rem);
 }
 
-[data-theme='dark'] {
-  --background: #1A202C;
+[data-theme="dark"] {
+  --background: #1a202c;
   --background2: #262f40;
-  --foreground: #F2EDE4;
+  --foreground: #f2ede4;
 }
 
-
-
-
- 
-
-
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   background-color: var(--background);
@@ -53,13 +48,27 @@ a {
 }
 
 /* Fonts */
-body,textarea,input{
-  font-family: 'Montserrat', sans-serif;
+body,
+textarea,
+input {
+  font-family: "Montserrat", sans-serif;
   line-height: 2;
+  font-size: var(--font-size-base);
+}
+h1 {
+  font-size: var(--font-size-xxl);
+}
+h2 {
+  font-size: var(--font-size-lg);
+}
+h3 {
+  font-size: var(--font-size-md);
 }
 .amatic {
-  font-family: 'Amatic SC', cursive;
+  font-family: "Amatic SC", cursive;
 }
-h1, button, link {
-  font-family: 'Bebas Neue', cursive;
+h1,
+button,
+link {
+  font-family: "Bebas Neue", cursive;
 }

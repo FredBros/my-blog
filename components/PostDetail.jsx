@@ -46,7 +46,7 @@ function PostDetail({ post }) {
         {post.categories.length > 0 && (
           <div className="tags">
             {post.categories.map((categorie, index) => (
-              <Link key={index} href={`/category/${categorie.slug}`}>
+              <Link key={index} href={`/${categorie.slug}/1`}>
                 <div className="tag-button">
                   <Button text={categorie.name}></Button>
                 </div>
@@ -58,11 +58,7 @@ function PostDetail({ post }) {
           <Date date={post.publishedAt} />
           <RichText
             content={post.content.raw}
-            renderers={{
-              h1: ({ children }) => <h1 className="h1">{children}</h1>,
-              h2: ({ children }) => <h2 className="h2">{children}</h2>,
-              h3: ({ children }) => <h3 className="h3">{children}</h3>,
-            }}
+            
           />
         </div>
       </div>
@@ -88,17 +84,7 @@ function PostDetail({ post }) {
           flex-wrap: wrap;
           gap: 10px;
           margin: 20px 5px;
-        }
-
-        .h1 {
-          font-size: var(--font-size-xxl);
-        }
-        .h2 {
-          font-size: var(--font-size-lg);
-        }
-        .h3 {
-          font-size: var(--font-size-md);
-        }
+        }        
       `}</style>
     </>
   );

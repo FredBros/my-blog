@@ -144,7 +144,9 @@ export const getPostDetails = async (slug) => {
           photo {
             url
           }
-          bio
+          bioDigest {
+            raw
+          }
         }
         content {
           raw
@@ -256,12 +258,15 @@ export const getPostsByCategoryByPage = async (slug, limit, offset) => {
           startCursor
         }
       }
+      category(where: { slug: $slug }) {
+        name
+      }
     }
   `;
 
   const result = await request(graphqlAPI, query, { slug, limit, offset });
 
-  return result.postsConnection;
+  return  result ;
 };
 
 export const getCategoryName = async (slug) => {
@@ -378,6 +383,31 @@ export const getViews = async (slug) => {
     const result = await request(graphqlAPI, query, { slug})
     return result.post.views;
 }
+
+
+export const getAuthor = async (slug) => {
+  const query = gql`
+    query GetAuthor($slug: String!) {
+      author(where: { slug: $slug }) {
+        bioDigest {
+          raw
+        }
+        name
+        slug
+        photo {
+          height
+          url
+          width
+        }
+        bio {
+          raw
+        }
+      }
+    }
+  `;
+  const result = await request(graphqlAPI, query, { slug });
+  return result.author;
+};
 
 
 export const submitComment = async (obj) => {

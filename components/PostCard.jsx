@@ -1,14 +1,16 @@
 import React from "react";
 import Image from "next/image";
-import imgRatio from "../utils/imgRatio"
+import imgRatio from "../utils/imgRatio";
 import BtnReadMore from "./BtnReadMore";
 
 function PostCard({ post, index }) {
+  const imageRatio = imgRatio(
+    post.featuredImage.width,
+    post.featuredImage.height
+  );
+  const isEvenFoo = (index) => index % 2 === 0;
+  const isEven = isEvenFoo(index);
 
-  const imageRatio = imgRatio(post.featuredImage.width, post.featuredImage.height);
-  const isEvenFoo = index => (index % 2 ===0) ;
-  const isEven = isEvenFoo(index) 
-  
   return (
     <>
       <div className="postcard">
@@ -24,7 +26,7 @@ function PostCard({ post, index }) {
         </div>
         <div className="content">
           <div className="title">
-            <h1>{post.title}</h1>
+            <h2>{post.title}</h2>
           </div>
           <div className="excerpt">
             <p>{post.excerpt}</p>
@@ -46,7 +48,10 @@ function PostCard({ post, index }) {
         }
 
         .title {
-          text-align: center;
+          text-align: center;          
+        }
+        h2{
+          font-family: "Bebas Neue";
         }
         .content {
           border: solid 2px var(--foreground);
@@ -71,9 +76,6 @@ function PostCard({ post, index }) {
             z-index: 1;
             background-color: var(--background);
             float: ${isEven ? "right" : "left"};
-          }
-          .title {
-            font-size: 24px;
           }
         }
       `}</style>

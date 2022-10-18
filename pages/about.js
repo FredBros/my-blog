@@ -1,9 +1,27 @@
 import React from 'react'
+import {getAuthor} from "../services"
+import Author from "../components/Author"
 
-function about() {
+function about({author}) {
   return (
-    <h1>ABOUT</h1>
-  )
+    <>
+      <Author author= {author}/>
+    </>
+  );
 }
 
 export default about
+
+
+export async function getStaticProps() {
+  
+    const data = await getAuthor("fredb");
+    console.log(data)
+  return {
+    props: {
+      author: data,
+    },
+    revalidate: 6000,
+  };
+    
+  };

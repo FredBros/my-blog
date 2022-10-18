@@ -45,18 +45,16 @@ function Edito({ edito }) {
           padding: 20px;
         }
         .content {
-          
         }
         .link {
           font-weight: bold;
           background-color: var(--color4);
           padding: 3px 5px;
+          color: var(--background);
         }
         .image-container {
           height: 250px;
           position: relative;
-
-          
         }
       `}</style>
     </div>

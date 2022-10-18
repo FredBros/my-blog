@@ -1,5 +1,2 @@
 TODO :
 
-remettre limit à 10 dans 
-pages\posts\[page].js
-pages\[category]\[page].js
