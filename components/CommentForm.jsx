@@ -166,8 +166,7 @@ function CommentForm({slug, hide}) {
       )}
 
       <style jsx>{`
-        .form-container {
-        }
+        
         .comment {
           width: 100%;
           min-height: 200px;

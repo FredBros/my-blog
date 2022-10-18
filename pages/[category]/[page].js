@@ -3,6 +3,8 @@ import PostCard from "../../components/PostCard";
 import Pagination from "../../components/Pagination";
 import { v4 as uuidv4 } from "uuid";
 import numberOfPages from "../../services/numberOfPages"
+import Title from "../../components/Title";
+
 
 
 import {
@@ -25,10 +27,8 @@ function postsByCategory({
   return (
     <>
       <div className="main-container">
-        <div className="category-name">
-          <span className="category-name_span">{categoryName}</span>
-        </div>
-
+          <Title text={categoryName} />
+        
         <section>
           {posts.map((post, index) => (
             <PostCard key={uuidv4()} index={index} post={post.node} />
@@ -48,21 +48,7 @@ function postsByCategory({
           max-width: 850px;
           margin: 40px auto 80px auto;
         }
-        .category-name {
-          min-width: 100px;
-          font-family: "Bebas Neue", cursive;
-          color: var(--background);
-          letter-spacing: 0.2rem;
-          border: none;
-          font-size: var(--font-size-xl);
-          display : flex;
-          justify-content : center;
-        }
-        .category-name_span {
-          background-color: var(--color4);
-          padding: 10px;
-          text-align: center;
-        }
+        
         section {
           display: flex;
           flex-direction: column;

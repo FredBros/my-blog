@@ -1,9 +1,24 @@
 import React from 'react'
+import ContactForm from "../components/ContactForm"
+import Title from "../components/Title"
 
 function contact() {
   return (
-    <h1>contact</h1>
-  )
+    <div className="contact-container">
+      <Title text="contact" />
+      <ContactForm />
+
+      <style jsx>{`
+                .contact-container{
+        width: 90%;
+          max-width: 600px;
+          margin: 40px auto 80px auto;
+          
+        
+        }
+              `}</style>
+    </div>
+  );
 }
 
 export default contact
