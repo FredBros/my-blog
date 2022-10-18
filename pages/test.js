@@ -16,21 +16,28 @@ function test() {
     const value = await Promise.all(categories.map((category) => 
       getNumberOfPostsByCategory(category.slug)))
     // const data = categories.map ((index, {slug})=> {return { slug, numberOfPosts: value[index]};})
-    const data = categories.map((category, index) => ({
-      ...category,
-      value: value[index],
-    }));
-      return data
+    // const data = categories.map((category, index) => ({
+    //   ...category,
+    //   value: value[index],
+    // }));
+      return categories
     
   };
 
 
-(async () => {
-  const numberOfPostsByCategory = await getNumberOfPostsByCategory();
-  console.log(numberOfPostsByCategory);   
-})();
+// (async () => {
+//   const { categories, value } = await getNumberOfPostsByCategory();
+//   const data = categories.map((category, index) => ({
+//     ...category,
+//     value: value[index],
+//   }));
+//   console.log(data);   
+// })();
 
-
+(async()=> {
+  const  categories  = await getNumberOfPostsByCategory()
+  console.log(categories);
+})()
 
   return <div>test</div>;
 }
