@@ -50,6 +50,7 @@ function ScrollToTop() {
           display: flex;
           flex-direction: column;
           justify-content: center;
+          z-index : 6;
         }
       `}</style>
     </>

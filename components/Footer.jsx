@@ -17,6 +17,7 @@ function Footer() {
           position: absolute;
           bottom: 0;
           width: 100%;
+          z-index: 5;
         }
         .copyright {
           margin: 0;

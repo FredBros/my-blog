@@ -39,7 +39,7 @@ function ProgressBar({ div }) {
           position: fixed;
           top: 0;
           left: 0;
-          z-index: 3;
+          z-index: 4;
           height: 40px;
           width: 40px;
           margin: 10px;

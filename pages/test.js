@@ -1,12 +1,12 @@
- import React from 'react'
-import { useRouter } from "next/router";
+ import React, { useState } from 'react'
+ import { gsap } from "gsap";
+ import lorem from "../data/lorem"
 
 
 function test() {
-   const router = useRouter()
-console.log(router.pathname);
+   
    return (
-     <div>test</div>
+     <p>{ lorem}</p>
    )
  }
  
