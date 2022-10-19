@@ -53,6 +53,8 @@ function Header() {
           font-size: var(--font-size-xxxl);
           color: var(--main-bg-color);
           text-align: center;
+          line-height: 100%;
+          padding-bottom: 10px;
         }
 
         .container-top {

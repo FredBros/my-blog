@@ -1,2 +1,6 @@
 TODO :
 
+
+
+COMMIT : 
+fix : footer position

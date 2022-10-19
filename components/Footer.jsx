@@ -13,6 +13,10 @@ function Footer() {
           color: var(--main-bg-color);
           padding: 10px;
           margin-top: 20px;
+          height: 100px;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
         }
         .copyright {
           margin: 0;
