@@ -17,7 +17,6 @@ import CarouselSimilarPosts from "../../components/CarouselSimilarPosts";
 
 function PostDetails({ post }) {
 
-  console.log("post : ", post);
   const router = useRouter();
 
   //todo fix increment number of views .... later

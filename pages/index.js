@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import { getPostsByPage, getEdito } from "../services";
 import PostCard from "../components/PostCard";
 import Edito from "../components/Edito"
@@ -16,8 +16,10 @@ require("default-passive-events");
 
 export default function Home({ edito, currentPageNumber, hasNextPage, hasPreviousPage, posts, count }) {
   
-
   emailjs.init(process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_API_KEY);
+
+ 
+
   return (
     <>
       <Head>
@@ -33,7 +35,7 @@ export default function Home({ edito, currentPageNumber, hasNextPage, hasPreviou
             <Edito edito={edito[0]} />
           </div>
           <div className="posts-container">
-            <section>
+            <section >
               {posts.map((post, index) => (
                 <PostCard key={uuidv4()} index={index} post={post.node} />
               ))}

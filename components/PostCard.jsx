@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import imgRatio from "../utils/imgRatio";
 import BtnReadMore from "./BtnReadMore";
+import useScaleInOut from "../utils/useScaleInOut";
 
 function PostCard({ post, index }) {
   const imageRatio = imgRatio(
@@ -10,30 +11,36 @@ function PostCard({ post, index }) {
   );
   const isEvenFoo = (index) => index % 2 === 0;
   const isEven = isEvenFoo(index);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    useScaleInOut(element);
+  }),
+    [];
 
   return (
-    <>
-      <div className="postcard">
-        <div className="image-container">
-          <Image
-            src={post.featuredImage.url}
-            layout="responsive"
-            className="image"
-            objectFit="contain"
-            width="100%"
-            height={`${imageRatio * 100}%`}
-          />
-        </div>
-        <div className="content">
-          <div className="title">
-            <h2>{post.title}</h2>
-          </div>
-          <div className="excerpt">
-            <p>{post.excerpt}</p>
-          </div>
-          <BtnReadMore slug={post.slug} />
-        </div>
+    <div className="postcard" ref={ref}>
+      <div className="image-container">
+        <Image
+          src={post.featuredImage.url}
+          layout="responsive"
+          className="image"
+          objectFit="contain"
+          width="100%"
+          height={`${imageRatio * 100}%`}
+        />
       </div>
+      <div className="content">
+        <div className="title">
+          <h2>{post.title}</h2>
+        </div>
+        <div className="excerpt">
+          <p>{post.excerpt}</p>
+        </div>
+        <BtnReadMore slug={post.slug} />
+      </div>
+
       <style jsx>{`
         .postcard {
           width: 90%;
@@ -48,9 +55,9 @@ function PostCard({ post, index }) {
         }
 
         .title {
-          text-align: center;          
+          text-align: center;
         }
-        h2{
+        h2 {
           font-family: "Bebas Neue";
         }
         .content {
@@ -79,7 +86,7 @@ function PostCard({ post, index }) {
           }
         }
       `}</style>
-    </>
+    </div>
   );
 }
 
