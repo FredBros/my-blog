@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import imgRatio from "../utils/imgRatio";
-import BtnReadMore from "./BtnReadMore";
 import useScaleInOut from "../utils/useScaleInOut";
+import Button from "../components/Button";
+import Link from "next/link";
 
 function PostCard({ post, index }) {
   const imageRatio = imgRatio(
@@ -38,7 +39,13 @@ function PostCard({ post, index }) {
         <div className="excerpt">
           <p>{post.excerpt}</p>
         </div>
-        <BtnReadMore slug={post.slug} />
+        <div className="read-more-btn">
+          <Link href={`/post/${post.slug}`}>
+            <div>
+              <Button text="Lire plus"></Button>
+            </div>
+          </Link>
+        </div>
       </div>
 
       <style jsx>{`
@@ -64,6 +71,11 @@ function PostCard({ post, index }) {
           border: solid 2px var(--foreground);
           padding: 10px 20px;
           line-height: 1.5;
+        }
+        .read-more-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         @media screen and (min-width: 768px) {
           .postcard {

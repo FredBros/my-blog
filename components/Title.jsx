@@ -4,11 +4,10 @@ function Title({ text }) {
   return (
     <>
       <div className="title">
-<span className="title-text">{text}</span>
+        <span className="title-text">{text}</span>
       </div>
       <style jsx>{`
         .title {
-          min-width: 100px;
           font-family: "Bebas Neue", cursive;
           color: var(--background);
           letter-spacing: 0.2rem;
@@ -18,8 +17,9 @@ function Title({ text }) {
           justify-content: center;
         }
         .title-text {
+          min-width: 200px;
           background-color: var(--color4);
-          padding: 10px 20px;
+          padding: 0 20px;
           text-align: center;
         }
       `}</style>
