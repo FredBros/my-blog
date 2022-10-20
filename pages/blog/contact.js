@@ -1,8 +1,16 @@
 import React from 'react'
 import ContactForm from "../../blog/components/form/ContactForm"
 import Title from "../../blog/components/ui/Title"
+import Loader from "../../blog/components/utils/Loader";
+import { useRouter } from "next/router";
 
 function contact() {
+
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
+
   return (
     <div className="contact-container">
       <Title text="contact" />

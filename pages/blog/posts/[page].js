@@ -4,11 +4,19 @@ import { v4 as uuidv4 } from "uuid";
 import PostCard from "../../../blog/components/modules/PostCard";
 import Pagination from "../../../blog/components/modules/Pagination";
 import numberOfPages from "../../../blog/services/numberOfPages";
+import Loader from "../../../blog/components/utils/Loader";
+import { useRouter } from "next/router";
 
 
 
 const limit = parseInt(process.env.NEXT_PUBLIC_NB_OF_POSTS_BY_PAGES) || 10;
 function posts({ currentPageNumber, hasNextPage, hasPreviousPage, posts, count }) {
+
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
+  
   return (
     <>
       <div className="main-container">

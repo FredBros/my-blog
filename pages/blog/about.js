@@ -1,8 +1,16 @@
 import React from 'react'
 import {getAuthor} from "../../blog/services"
 import Author from "../../blog/components/modules/Author"
+import Loader from "../../blog/components/utils/Loader";
+import { useRouter } from "next/router";
 
 function about({author}) {
+
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
+
   return (
     <>
       <Author author= {author}/>

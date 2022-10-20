@@ -4,6 +4,9 @@ import Pagination from "../../../blog/components/modules/Pagination";
 import { v4 as uuidv4 } from "uuid";
 import numberOfPages from "../../../blog/services/numberOfPages"
 import Title from "../../../blog/components/ui/Title";
+import Loader from "../../../blog/components/utils/Loader";
+import { useRouter } from "next/router";
+
 
 
 
@@ -23,6 +26,12 @@ function postsByCategory({
   count,
   categoryName,
 }) {
+
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
+
   return (
     <>
       <div className="main-container">

@@ -7,6 +7,9 @@ import { v4 as uuidv4 } from "uuid";
 import Pagination from "../../blog/components/modules/Pagination";
 import emailjs from "@emailjs/browser";
 require("default-passive-events");
+import Loader from "../../blog/components/utils/Loader";
+import { useRouter } from "next/router";
+
 
 const limit = parseInt(process.env.NEXT_PUBLIC_NB_OF_POSTS_BY_PAGES) || 10;
 
@@ -20,6 +23,10 @@ function Home({
 }) {
   emailjs.init(process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_API_KEY);
 
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loader />;
+  }
   return (
     <>
       <Head>
