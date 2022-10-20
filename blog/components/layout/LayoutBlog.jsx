@@ -5,7 +5,7 @@ import ScrollToTop from "./ScrollToTop";
 import FadeTop from "./FadeTop";
 import FadeBottom from "./FadeBottom";
 
-function Layout({children}) {
+function LayoutBlog({children}) {
   return (
     <div className="page-container">
       <FadeTop/>
@@ -30,4 +30,4 @@ function Layout({children}) {
   );
 }
 
-export default Layout
+export default LayoutBlog

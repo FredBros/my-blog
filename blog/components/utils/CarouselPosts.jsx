@@ -39,7 +39,7 @@ function CarouselPosts({ posts }) {
       >
         {posts.map((post, index) => (
           <div key={index} className="carousel-item-container">
-            <Link href={`/post/${post.slug}`}>
+            <Link href={`/blog/post/${post.slug}`}>
               <div className="carousel-item">
                 <div className="image">
                   <Image
@@ -87,6 +87,7 @@ function CarouselPosts({ posts }) {
           flex-direction: column;
           padding: 20px;
           color: var(--font-color-dark);
+          cursor: pointer;
         }
       `}</style>
     </div>

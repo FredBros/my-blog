@@ -1,6 +1,6 @@
 import React from 'react'
-import ContactForm from "../blog/components/form/ContactForm"
-import Title from "../blog/components/ui/Title"
+import ContactForm from "../../blog/components/form/ContactForm"
+import Title from "../../blog/components/ui/Title"
 
 function contact() {
   return (
@@ -21,4 +21,5 @@ function contact() {
   );
 }
 
+contact.layout = "blog"
 export default contact

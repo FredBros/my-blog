@@ -1,6 +1,6 @@
 import React from 'react'
-import {getAuthor} from "../blog/services"
-import Author from "../blog/components/modules/Author"
+import {getAuthor} from "../../blog/services"
+import Author from "../../blog/components/modules/Author"
 
 function about({author}) {
   return (
@@ -9,7 +9,7 @@ function about({author}) {
     </>
   );
 }
-
+about.layout = "blog"
 export default about
 
 

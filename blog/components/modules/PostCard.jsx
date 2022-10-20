@@ -40,7 +40,7 @@ function PostCard({ post, index }) {
           <p>{post.excerpt}</p>
         </div>
         <div className="read-more-btn">
-          <Link href={`/post/${post.slug}`}>
+          <Link href={`/blog/post/${post.slug}`}>
             <div>
               <Button text="Lire plus"></Button>
             </div>

@@ -1,18 +1,17 @@
 import React from 'react'
-import PostCard from "../../blog/components/modules/PostCard";
-import Pagination from "../../blog/components/modules/Pagination";
+import PostCard from "../../../blog/components/modules/PostCard";
+import Pagination from "../../../blog/components/modules/Pagination";
 import { v4 as uuidv4 } from "uuid";
-import numberOfPages from "../../blog/services/numberOfPages"
-import Title from "../../blog/components/ui/Title";
+import numberOfPages from "../../../blog/services/numberOfPages"
+import Title from "../../../blog/components/ui/Title";
 
 
 
 import {
   getNumberOfPostsByCategory,
-  getNumberOfPosts,
   getCategories,
   getPostsByCategoryByPage,
-} from "../../blog/services";
+} from "../../../blog/services";
 
 const limit = parseInt(process.env.NEXT_PUBLIC_NB_OF_POSTS_BY_PAGES) || 10;
 
@@ -60,7 +59,7 @@ function postsByCategory({
     </>
   );
 }
-
+postsByCategory.layout = "blog"
 export default postsByCategory
 
 const numberOfPostsByCategoryFoo = async () => {

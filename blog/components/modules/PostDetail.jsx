@@ -46,7 +46,7 @@ function PostDetail({ post }) {
         {post.categories.length > 0 && (
           <div className="tags">
             {post.categories.map((categorie, index) => (
-              <Link key={index} href={`/${categorie.slug}/1`}>
+              <Link key={index} href={`/blog/${categorie.slug}/1`}>
                 <div className="tag-button">
                   <Button text={categorie.name}></Button>
                 </div>
