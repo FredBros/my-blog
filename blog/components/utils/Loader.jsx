@@ -4,18 +4,30 @@ import { ThreeCircles } from "react-loader-spinner";
 
 function Loader() {
   return (
-    <ThreeCircles
-      height="100"
-      width="100"
-      color="#DD826F"
-      wrapperStyle={{}}
-      wrapperClass="loader"
-      visible={true}
-      ariaLabel="three-circles-rotating"
-      outerCircleColor=""
-      innerCircleColor="#F69F82"
-      middleCircleColor="#6D9891"
-    />
+    <>
+    
+      <ThreeCircles
+        className="loader"
+        height="100"
+        width="100"
+        color="#DD826F"
+        wrapperStyle={{}}
+        wrapperClass="loader"
+        visible={true}
+        ariaLabel="three-circles-rotating"
+        outerCircleColor=""
+        innerCircleColor="#F69F82"
+        middleCircleColor="#6D9891"
+      />
+      <style jsx>{`
+              .loader{
+      position : absolute;
+      top : 50%;
+      left : 50%;
+
+      }
+            `}</style>
+    </>
   );
 }
 

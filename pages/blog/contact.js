@@ -1,15 +1,11 @@
 import React from 'react'
 import ContactForm from "../../blog/components/form/ContactForm"
 import Title from "../../blog/components/ui/Title"
-import Loader from "../../blog/components/utils/Loader";
-import { useRouter } from "next/router";
 
-function contact() {
 
-  const router = useRouter();
-  if (router.isFallback) {
-    return <Loader />;
-  }
+function Contact() {
+
+  
 
   return (
     <div className="contact-container">
@@ -29,5 +25,5 @@ function contact() {
   );
 }
 
-contact.layout = "blog"
-export default contact
+Contact.layout = "blog"
+export default Contact

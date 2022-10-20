@@ -4,8 +4,7 @@ import Pagination from "../../../blog/components/modules/Pagination";
 import { v4 as uuidv4 } from "uuid";
 import numberOfPages from "../../../blog/services/numberOfPages"
 import Title from "../../../blog/components/ui/Title";
-import Loader from "../../../blog/components/utils/Loader";
-import { useRouter } from "next/router";
+
 
 
 
@@ -18,7 +17,7 @@ import {
 
 const limit = parseInt(process.env.NEXT_PUBLIC_NB_OF_POSTS_BY_PAGES) || 10;
 
-function postsByCategory({
+function PostsByCategory({
   currentPageNumber,
   hasNextPage,
   hasPreviousPage,
@@ -27,10 +26,7 @@ function postsByCategory({
   categoryName,
 }) {
 
-  const router = useRouter();
-  if (router.isFallback) {
-    return <Loader />;
-  }
+ 
 
   return (
     <>
@@ -68,8 +64,8 @@ function postsByCategory({
     </>
   );
 }
-postsByCategory.layout = "blog"
-export default postsByCategory
+PostsByCategory.layout = "blog"
+export default PostsByCategory
 
 const numberOfPostsByCategoryFoo = async () => {
   const categories = await getCategories();

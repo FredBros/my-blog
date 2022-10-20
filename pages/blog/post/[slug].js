@@ -1,7 +1,6 @@
 import React from "react";
-import { useRouter } from "next/router";
 import PostDetail from "../../../blog/components/modules/PostDetail";
-import Loader from "../../../blog/components/utils/Loader";
+
 import { getPosts, getPostDetails } from "../../../blog/services";
 import CommentForm from "../../../blog/components/form/CommentForm";
 import Comments from "../../../blog/components/modules/Comments";
@@ -17,7 +16,8 @@ import CarouselSimilarPosts from "../../../blog/components/modules/CarouselSimil
 
 function PostDetails({ post }) {
 
-  const router = useRouter();
+  
+  const { isShowing, toggle } = useModal();
 
   //todo fix increment number of views .... later
   // const [views, setViews] = useState(0)
@@ -26,11 +26,8 @@ function PostDetails({ post }) {
 //   setViews(newViews)})()  
 // }, [])
 
-  if (router.isFallback) {
-    return <Loader />;
-  }
+  
 
-  const { isShowing, toggle } = useModal();
 
   return (
     <>

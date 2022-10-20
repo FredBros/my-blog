@@ -1,15 +1,10 @@
 import React from 'react'
 import {getAuthor} from "../../blog/services"
 import Author from "../../blog/components/modules/Author"
-import Loader from "../../blog/components/utils/Loader";
-import { useRouter } from "next/router";
 
-function about({author}) {
+function About({author}) {
 
-  const router = useRouter();
-  if (router.isFallback) {
-    return <Loader />;
-  }
+  
 
   return (
     <>
@@ -17,8 +12,8 @@ function about({author}) {
     </>
   );
 }
-about.layout = "blog"
-export default about
+About.layout = "blog"
+export default About
 
 
 export async function getStaticProps() {
