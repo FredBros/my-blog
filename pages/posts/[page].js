@@ -1,9 +1,9 @@
 import React from "react";
-import {getNumberOfPosts, getPostsByPage} from "../../services"
+import {getNumberOfPosts, getPostsByPage} from "../../blog/services"
 import { v4 as uuidv4 } from "uuid";
-import PostCard from "../../components/PostCard";
-import Pagination from "../../components/Pagination";
-import numberOfPages from "../../../my_blog/services/numberOfPages";
+import PostCard from "../../blog/components/modules/PostCard";
+import Pagination from "../../blog/components/modules/Pagination";
+import numberOfPages from "../../blog/services/numberOfPages";
 
 
 

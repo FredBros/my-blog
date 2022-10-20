@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import SwitchColor from '../components/SwitchColor'
+import SwitchColor from '../layout/SwitchColor'
 import Logo from './Logo'
 import RSHeader from './RSHeader'
 import MediaQuery from "react-responsive";

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getBlogTitle, getPostShared } from "../services";
+import { getBlogTitle, getPostShared } from "../../services";
 import { useRouter } from "next/router";
 import Loader from "./Loader";
 import Image from "next/image";

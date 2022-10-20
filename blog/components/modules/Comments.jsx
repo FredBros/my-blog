@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import {getComments} from '../services'
+import {getComments} from '../../services'
 import dayjs from "dayjs";
 
 

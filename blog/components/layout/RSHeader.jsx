@@ -1,18 +1,13 @@
-import React from 'react'
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import useModal from "../utils/useModal";
-import Modal from "../components/Modal";
-import ShareModal from "../components/ShareModal"
-import Sharebutton from "../components/Sharebutton"
-
-
-
+import useModal from "../../utils/useModal";
+import Modal from "../utils/Modal";
+import ShareModal from "../ui/ShareModal";
+import Sharebutton from "../ui/Sharebutton";
 
 function RSHeader() {
-
-    const { isShowing, toggle } = useModal();
-
+  const { isShowing, toggle } = useModal();
 
   return (
     <>
@@ -58,7 +53,7 @@ function RSHeader() {
           gap: 4px;
           align-items: center;
         }
-        a{
+        a {
           height: 30px;
         }
         .share-container {
@@ -69,4 +64,4 @@ function RSHeader() {
   );
 }
 
-export default RSHeader
+export default RSHeader;

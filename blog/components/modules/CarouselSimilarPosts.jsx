@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
-import {getSimilarPosts} from "../services"
-import CarouselPosts from "./CarouselPosts"
+import {getSimilarPosts} from "../../services"
+import CarouselPosts from "../utils/CarouselPosts"
 
 function CarouselSimilarPosts({categories, slug}) {
 

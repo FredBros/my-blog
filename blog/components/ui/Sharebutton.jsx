@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from "next/image";
-import useModal from "../utils/useModal";
+import useModal from "../../utils/useModal";
 import ShareModal from "./ShareModal"
-import Modal from "./Modal"
+import Modal from "../modules/Modal"
 
 function Sharebutton() {
 

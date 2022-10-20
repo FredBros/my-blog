@@ -1,6 +1,6 @@
 import React from 'react'
-import ContactForm from "../components/ContactForm"
-import Title from "../components/Title"
+import ContactForm from "../blog/components/form/ContactForm"
+import Title from "../blog/components/ui/Title"
 
 function contact() {
   return (

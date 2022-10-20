@@ -1,9 +1,9 @@
 import React from 'react'
-import PostCard from "../../components/PostCard";
-import Pagination from "../../components/Pagination";
+import PostCard from "../../blog/components/modules/PostCard";
+import Pagination from "../../blog/components/modules/Pagination";
 import { v4 as uuidv4 } from "uuid";
-import numberOfPages from "../../services/numberOfPages"
-import Title from "../../components/Title";
+import numberOfPages from "../../blog/services/numberOfPages"
+import Title from "../../blog/components/ui/Title";
 
 
 
@@ -12,7 +12,7 @@ import {
   getNumberOfPosts,
   getCategories,
   getPostsByCategoryByPage,
-} from "../../services";
+} from "../../blog/services";
 
 const limit = parseInt(process.env.NEXT_PUBLIC_NB_OF_POSTS_BY_PAGES) || 10;
 

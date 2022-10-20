@@ -1,18 +1,13 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {getBlogTitle} from "../services"
-
-
-
+import { getBlogTitle } from "../../services";
 
 function Logo() {
-
-  const [blogTitle, setBlogTitle] = useState()
-useEffect(() => {
-  getBlogTitle().then((data) => setBlogTitle(data));
-}, [])
-
+  const [blogTitle, setBlogTitle] = useState();
+  useEffect(() => {
+    getBlogTitle().then((data) => setBlogTitle(data));
+  }, []);
 
   return (
     <Link href={`/`}>

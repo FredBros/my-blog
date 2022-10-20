@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
-import Button from "../components/Button";
+import Button from "../ui/Button";
 
 function ContactForm() {
   const [state, handleSubmit] = useForm("xdojlgep");
@@ -17,7 +17,7 @@ function ContactForm() {
       <h2>Bonjour, faisons connaissance.</h2>
       <div className="name-email-container">
         <div className="label-input-container">
-          <label for="full-name">Nom</label>
+          <label htmlFor="full-name">Nom</label>
           <input
             type="text"
             name="name"

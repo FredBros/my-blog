@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import imgRatio from "../utils/imgRatio";
-import useScaleInOut from "../utils/useScaleInOut";
-import Button from "../components/Button";
+import imgRatio from "../../utils/imgRatio";
+import useScaleInOut from "../../utils/useScaleInOut";
+import Button from "../ui/Button";
 import Link from "next/link";
 
 function PostCard({ post, index }) {

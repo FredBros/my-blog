@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import {submitComment} from '../services'
-import Button from "../components/Button";
+import {submitComment} from '../../services'
+import Button from "../ui/Button";
 import emailjs from "@emailjs/browser";
 
 function CommentForm({slug, hide}) {

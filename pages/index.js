@@ -1,10 +1,10 @@
 import Head from "next/head";
 import React  from "react";
-import { getPostsByPage, getEdito } from "../services";
-import PostCard from "../components/PostCard";
-import Edito from "../components/Edito"
+import { getPostsByPage, getEdito } from "../blog/services";
+import PostCard from "../blog/components/modules/PostCard";
+import Edito from "../blog/components/modules/Edito"
 import { v4 as uuidv4 } from "uuid";
-import Pagination from "../components/Pagination";
+import Pagination from "../blog/components/modules/Pagination";
 import emailjs from "@emailjs/browser";
 require("default-passive-events");
 

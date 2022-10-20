@@ -1,9 +1,9 @@
 import React from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import ScrollToTop from "../components/ScrollToTop"
-import FadeTop from "../components/FadeTop"
-import FadeBottom from "../components/FadeBottom"
+import Footer from './Footer'
+import Header from "./Header";
+import ScrollToTop from "./ScrollToTop";
+import FadeTop from "./FadeTop";
+import FadeBottom from "./FadeBottom";
 
 function Layout({children}) {
   return (

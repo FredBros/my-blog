@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { Navigation } from "react-minimal-side-navigation";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
-import {getCategories} from "../services/index"
-import navItems from "../data/navItems"
+import {getCategories} from "../../services"
+import navItems from "../../data/navItems"
 
 // import { useHistory, useLocation } from "react-router-dom";
 

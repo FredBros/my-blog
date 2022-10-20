@@ -1,6 +1,6 @@
 import React from 'react'
-import {getAuthor} from "../services"
-import Author from "../components/Author"
+import {getAuthor} from "../blog/services"
+import Author from "../blog/components/modules/Author"
 
 function about({author}) {
   return (

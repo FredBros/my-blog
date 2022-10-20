@@ -1,14 +1,14 @@
 import React from "react";
 import { useRouter } from "next/router";
-import PostDetail from "../../components/PostDetail";
-import Loader from "../../components/Loader";
-import { getPosts, getPostDetails } from "../../services";
-import CommentForm from "../../components/CommentForm";
-import Comments from "../../components/Comments";
-import useModal from "../../utils/useModal";
-import Modal from "../../components/Modal";
-import Button from "../../components/Button";
-import CarouselSimilarPosts from "../../components/CarouselSimilarPosts";
+import PostDetail from "../../blog/components/modules/PostDetail";
+import Loader from "../../blog/components/utils/Loader";
+import { getPosts, getPostDetails } from "../../blog/services";
+import CommentForm from "../../blog/components/form/CommentForm";
+import Comments from "../../blog/components/modules/Comments";
+import useModal from "../../blog/utils/useModal";
+import Modal from "../../blog/components/utils/Modal";
+import Button from "../../blog/components/ui/Button";
+import CarouselSimilarPosts from "../../blog/components/modules/CarouselSimilarPosts";
 // import incrementViews from "../../services/incrementViews"
 
 

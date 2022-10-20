@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import Image from "next/image";
-import imgRatio from "../utils/imgRatio";
+import imgRatio from "../../utils/imgRatio";
 import { RichText } from "@graphcms/rich-text-react-renderer";
-import ProgressBar from "./ProgressBar";
-import Date from "./Date"
-import Button from "../components/Button";
+import ProgressBar from "../ui/ProgressBar";
+import Date from "../utils/Date"
+import Button from "../ui/Button";
 import Link from "next/link";
-import Sharebutton from "./Sharebutton"
+import Sharebutton from "../ui/Sharebutton"
 
 
 

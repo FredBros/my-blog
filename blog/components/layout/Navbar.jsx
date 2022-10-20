@@ -1,23 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { getCategories } from "../services/index";
-import navItems from "../data/navItems";
-import NavDropdown from "../components/NavDropdown";
+import { getCategories } from "../../services/index";
+import navItems from "../../data/navItems";
+import NavDropdown from "../layout/NavDropdown";
 
 function Navbar() {
-
-  
   const [categories, setCategories] = useState([]);
 
   const navbarItems = navItems(categories);
   const [dropdown, setDropdown] = useState(false);
 
-
   useEffect(() => {
     getCategories().then((newCategories) => setCategories(newCategories));
-    
   }, []);
-
 
   // Close dropdown when click outside menu
   const ref = useRef();
@@ -35,7 +30,6 @@ function Navbar() {
       document.removeEventListener("touchstart", handler);
     };
   }, [dropdown]);
-
 
   return (
     <>
