@@ -35,7 +35,8 @@ function CarouselPosts({ posts }) {
         responsive={responsive}
         infinite={true}
         autoPlaySpeed={5000}
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        autoPlay={true}
+        // removeArrowOnDeviceType={["tablet", "mobile"]}
       >
         {posts.map((post, index) => (
           <div key={index} className="carousel-item-container">
